@@ -1,4 +1,10 @@
-# Author: Cássio Murakami
+# -*- coding: utf-8 -*-
+"""
+Author: Cássio Murakami
+Project: NAPDE
+Title: local-element.py
+"""
+
 import numpy as np 
 import math
 import matplotlib.pyplot as plt

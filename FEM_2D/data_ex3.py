@@ -1,6 +1,10 @@
-# Author: Cássio Murakami
-# Finite Element Solver: 2D Poisson
-# Basic packages:
+# -*- coding: utf-8 -*-
+"""
+Author: Cássio Murakami
+Project: NAPDE
+Title: data-ex3.py
+"""
+
 import numpy as np 
 import math
 

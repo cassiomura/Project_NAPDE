@@ -1,5 +1,9 @@
-# Author: Cássio Murakami
-# Finite Element Solver: 2D Poisson
+# -*- coding: utf-8 -*-
+"""
+Author: Cássio Murakami
+Project: NAPDE
+Title: Boundary-condition.py
+"""
 import numpy as np 
 import math
 import matplotlib.pyplot as plt

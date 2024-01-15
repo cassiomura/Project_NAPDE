@@ -1,5 +1,9 @@
-# Author: Cássio Murakami
-# Finite Element Solver: 2D Poisson
+# -*- coding: utf-8 -*-
+"""
+Author: Cássio Murakami
+Project: NAPDE
+Title: main.py
+"""
 
 # Basic packages:
 import numpy as np 

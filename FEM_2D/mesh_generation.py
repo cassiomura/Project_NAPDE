@@ -1,5 +1,10 @@
-# Author: Cássio Murakami
-# Finite Element Solver: 2D Poisson
+# -*- coding: utf-8 -*-
+"""
+Author: Cássio Murakami
+Project: NAPDE
+Title: main.py
+"""
+
 import numpy as np 
 import math
 from local_element import Local_element
