@@ -26,7 +26,7 @@ x1 = 0
 y1 = 0
 x2 = Lx
 y2 = Ly
-h = Lx/50
+h = Lx/10
 
 alpha = H*beta/R
 gamma = W*math.pi/(R*Ly)

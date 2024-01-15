@@ -6,22 +6,19 @@ Title: main.py
 """
 
 # Basic packages:
-import numpy as np 
-import math
-import matplotlib.pyplot as plt
-from matplotlib import cm
+from config_packages import np, math, plt, cm
+
 # Custom packages:
-from mesh_generation import Mesh
-from local_element import Local_element
-from boundary_conditions import impose_boundary_conditions
-from compute_errors import compute_errors
-from data import x1, x2, y1, y2, h, plot_solution
+import mesh_generation
+import boundary_conditions
+import post_processing
+import data
 
 #1. Mesh generation:
 print("============================================================")
 print(" Generating mesh ...")
 print("============================================================")
-mesh = Mesh([x1, x2], [y1, y2], h)
+mesh = mesh_generation.Mesh([data.x1, data.x2], [data.y1, data.y2], data.h)
 
 #2. Assemble of global matrices and right hand side:
 print("============================================================")
@@ -46,7 +43,7 @@ for local_element in mesh.elements:
 print("============================================================")
 print(" Imposing boundary conditions ...")
 print("============================================================")
-A, F, g = impose_boundary_conditions(A, F, mesh)
+A, F, g = boundary_conditions.impose_boundary_conditions(A, F, mesh)
 
 # 4. Solve the algebraic problem:
 print("============================================================")
@@ -60,7 +57,7 @@ U = U + g
 print("============================================================")
 print(" Post-processing the solution ...")
 print("============================================================")
-if plot_solution == 'y':
+if data.plot_solution == 'y':
     fig = plt.figure()
     ax = fig.add_subplot(projection='3d')
     surf = ax.plot_trisurf(mesh.x_coord, mesh.y_coord, U, cmap=cm.coolwarm)
@@ -74,4 +71,4 @@ if plot_solution == 'y':
 print("============================================================")
 print(" Computing errors ...")
 print("============================================================")
-err = compute_errors(U, mesh)
+err = post_processing.compute_errors(U, mesh)

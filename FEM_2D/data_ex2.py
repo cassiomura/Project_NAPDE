@@ -1,8 +1,9 @@
-# Author: Cássio Murakami
-# Finite Element Solver: 2D Poisson
-# Basic packages:
-import numpy as np 
-import math
+# -*- coding: utf-8 -*-
+"""
+Author: Cássio Murakami
+Project: NAPDE
+Title: data-ex2.py
+"""
 
 # Domain definition:
 x1 = 0

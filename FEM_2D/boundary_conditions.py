@@ -6,7 +6,7 @@ Title: Boundary-condition.py
 """
 import numpy as np 
 import math
-from data import g1, g2, g3, g4
+from data import *
 
 def impose_boundary_conditions(A, F, mesh):
     g = np.zeros(mesh.ndof)

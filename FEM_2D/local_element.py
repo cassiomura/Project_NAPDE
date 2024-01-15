@@ -7,9 +7,7 @@ Title: local-element.py
 
 import numpy as np 
 import math
-import matplotlib.pyplot as plt
-from matplotlib import cm
-from data import f, mu, beta, sigma
+from data import *
 
 # Gaussian quadrature points:
 quad_points = [[0, 1/2], [1/2, 0], [1/2, 1/2]]
