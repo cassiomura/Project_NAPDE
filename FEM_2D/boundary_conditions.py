@@ -4,7 +4,6 @@ Author: Cássio Murakami
 Project: NAPDE
 Title: Boundary-condition.py
 """
-
 import numpy as np 
 import math
 from data import g1, g2, g3, g4
