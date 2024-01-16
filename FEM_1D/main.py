@@ -48,12 +48,19 @@ def main():
     # Lifting operation:
     U = U + g
 
+    # Analytical solution:
+    U_an = np.zeros(len(U))
+    for i in range(len(U)):
+        U_an[i] = 0.5*math.sin(mesh.nodes[i])
+
     # 5. Plotting the solution:
     logging.info("(5/6) Plotting the solution ...")
     # Plot the solution
     if data.plot_solution == 'y':
         fig = plt.figure()
-        plt.plot(mesh.coord, U , label = "Finite Element Method")
+        plt.plot(mesh.coord, U, label = "Finite Element Method")
+        plt.plot(mesh.coord, U_an , label = "Analytical")
+        #plt.plot(mesh.coord, U - U_an , label = "Difference")
         plt.xlabel('x')
         plt.ylabel('y')
         plt.title('Finite Element Solver: 1D Laplacian')
@@ -61,8 +68,9 @@ def main():
         plt.draw()
 
     # 6. Computing the error:
-    #logging.info("(6/6) Computing errors ...")
-    #err = post_processing.compute_errors(U, mesh)
+    logging.info("(6/6) Computing errors ...")
+    L2_error = post_processing.compute_errors(U, mesh)
+    print(L2_error)
 
     # 7. Finish the program:
     plt.show()

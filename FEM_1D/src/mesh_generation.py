@@ -36,5 +36,5 @@ class Mesh:
         for element_indexes in elements_nodes_:
             node1 = nodes_[element_indexes[0]]
             node2 = nodes_[element_indexes[1]]
-            elements_.append(Local_element(node1, node2))
+            elements_.append(Local_element(node1, node2, element_indexes[0], element_indexes[1]))
         self.elements = elements_

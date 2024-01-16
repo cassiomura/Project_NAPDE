@@ -12,7 +12,7 @@ import math
 # Domain definition:
 x1 = 0
 x2 = 2*math.pi
-h = 0.1
+h = 0.01
 
 # Plot options:
 plot_solution = 'y'
@@ -37,4 +37,4 @@ def sigma(x):
     return 1
 
 def u_an(x):
-    return math.sin(x)
+    return 0.5*math.sin(x)
