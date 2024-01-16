@@ -9,40 +9,36 @@ import math
 
 # Domain definition:
 x1 = 0
-y1 = 0
-x2 = 1
-y2 = 1
+x2 = 2*math.pi
 h = 0.1
 
 # Plot options:
 plot_solution = 'y'
 plot_error = 'n'
 
-def f(x, y):
-    return 8*math.pi**2*math.sin(2*math.pi*x)*math.sin(2*math.pi*y)
+def f(x):
+    return math.sin(x)
 
-def g1(x,y):
-    return 0
+#def g1(x,y):
+#    return 0
 
-def g2(x,y):
-    return 0
+#def g2(x,y):
+#    return 0
 
-def g3(x,y):
-    return 0
+#def g3(x,y):
+#    return 0
 
-def g4(x,y):
-    return 0
+#def g4(x,y):
+#    return 0
 
-def mu(x, y):
+def mu(x):
     return 1
 
-def beta(x, y):
-    b0 = 0
-    b1 = 0
-    return [b0, b1]
-
-def sigma(x,y):
+def beta(x):
     return 0
 
-def u_an(x,y):
-    return math.sin(2*math.pi*x)*math.sin(2*math.pi*y)
+def sigma(x):
+    return 1
+
+def u_an(x):
+    return math.sin(x)

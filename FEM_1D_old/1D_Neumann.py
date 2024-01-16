@@ -83,7 +83,7 @@ x2 = 2*math.pi
 g1 = 0
 g2 = 0
 # Mesh size
-h = 0.01
+h = 0.1
 
 #1. Mesh generation:
 dof = math.floor((x2 - x1)/h) + 1
@@ -141,6 +141,8 @@ for local_element in local_list:
     M[local_element.index_j][local_element.index_j] += local_element.M_local()[1][1]
 
 A = A + M
+
+print(A)
 
 #3. Source vector generation:
 F = np.zeros(dof)
