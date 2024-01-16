@@ -19,17 +19,12 @@ plot_error = 'n'
 def f(x):
     return math.sin(x)
 
-#def g1(x,y):
-#    return 0
+def g1(x):
+    return 0
 
-#def g2(x,y):
-#    return 0
+def g2(x):
+    return 0
 
-#def g3(x,y):
-#    return 0
-
-#def g4(x,y):
-#    return 0
 
 def mu(x):
     return 1

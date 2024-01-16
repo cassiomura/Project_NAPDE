@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Author: Cássio Murakami
-Project: NAPDE
+Project: NAPDE FEM 1D
 Title: main.py
 """
 # Basic packages:
@@ -38,36 +38,34 @@ def main():
             F[mesh.elements_nodes[element][m]] += local_element.F_local()[m]
         element = element + 1
 
-    print(A)
     # 3. Impose boundary conditions:
-    #logging.info("(3/6) Imposing boundary conditions ...")
-    #A, F, g = boundary_conditions.impose_boundary_conditions(A, F, mesh)
+    logging.info("(3/6) Imposing boundary conditions ...")
+    A, F, g = boundary_conditions.impose_boundary_conditions(A, F, mesh)
 
     # 4. Solve the algebraic problem:
-    #logging.info("(4/6) Solving the algebric problem ...")
-    #U = np.linalg.solve(A, F)
+    logging.info("(4/6) Solving the algebric problem ...")
+    U = np.linalg.solve(A, F)
     # Lifting operation:
-    #U = U + g
+    U = U + g
 
     # 5. Plotting the solution:
-    #logging.info("(5/6) Plotting the solution ...")
+    logging.info("(5/6) Plotting the solution ...")
     # Plot the solution
-    #if data.plot_solution == 'y':
-    #    fig = plt.figure()
-    #    ax = fig.add_subplot(projection='3d')
-    #    surf = ax.plot_trisurf(mesh.x_coord, mesh.y_coord, U, cmap=cm.coolwarm)
-    #    ax.set_xlabel('x')
-    #    ax.set_ylabel('y')
-    #    ax.set_zlabel('u(x,y)')
-    #    plt.title('Finite Element Solver')
-    #    plt.draw()
+    if data.plot_solution == 'y':
+        fig = plt.figure()
+        plt.plot(mesh.coord, U , label = "Finite Element Method")
+        plt.xlabel('x')
+        plt.ylabel('y')
+        plt.title('Finite Element Solver: 1D Laplacian')
+        plt.legend(fancybox=True, framealpha=1, shadow=True, borderpad=1)
+        plt.draw()
 
     # 6. Computing the error:
     #logging.info("(6/6) Computing errors ...")
     #err = post_processing.compute_errors(U, mesh)
 
     # 7. Finish the program:
-    #plt.show()
+    plt.show()
     exit()
 
 if __name__ == '__main__':
