@@ -4,11 +4,12 @@ Author: Cássio Murakami
 Project: NAPDE
 Title: config-packages.py
 """
+import importlib
+module_name = "data_ex2"
+data = importlib.import_module(module_name)
+
 # Basic packages:
 import numpy as np 
 import math
 import matplotlib.pyplot as plt
 from matplotlib import cm
-
-# Custom packages:
-#from data import u_an, plot_error

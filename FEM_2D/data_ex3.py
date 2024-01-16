@@ -4,7 +4,6 @@ Author: Cássio Murakami
 Project: NAPDE
 Title: data-ex3.py
 """
-
 import numpy as np 
 import math
 

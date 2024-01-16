@@ -4,6 +4,8 @@ Author: Cássio Murakami
 Project: NAPDE
 Title: data-ex2.py
 """
+import numpy as np 
+import math
 
 # Domain definition:
 x1 = 0

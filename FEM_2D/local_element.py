@@ -5,9 +5,10 @@ Project: NAPDE
 Title: local-element.py
 """
 
-import numpy as np 
-import math
-from data import *
+# Basic packages:
+from config_packages import np, math, plt, cm, data
+
+#from data import *
 
 # Gaussian quadrature points:
 quad_points = [[0, 1/2], [1/2, 0], [1/2, 1/2]]
@@ -57,7 +58,7 @@ class Local_element:
                     dphi_m = self.dphi(m, x_, y_)
                     dphi_n = self.dphi(n, x_, y_)
 
-                    A_local_[m][n] += abs(det_J)*quad_weights[q]*mu(x_, y_)*np.dot(dphi_m, dphi_n)
+                    A_local_[m][n] += abs(det_J)*quad_weights[q]*data.mu(x_, y_)*np.dot(dphi_m, dphi_n)
         return A_local_
 
     def V_local(self):
@@ -71,7 +72,7 @@ class Local_element:
                     phi_m = self.phi(m, x_, y_)
                     dphi_n = self.dphi(n, x_, y_)
 
-                    V_local_[m][n] += abs(det_J)*quad_weights[q]*np.dot(beta(x_, y_), dphi_n)*phi_m
+                    V_local_[m][n] += abs(det_J)*quad_weights[q]*np.dot(data.beta(x_, y_), dphi_n)*phi_m
         return V_local_
 
     def M_local(self):
@@ -85,7 +86,7 @@ class Local_element:
                     phi_m = self.phi(m, x_, y_)
                     phi_n = self.phi(n, x_, y_)
 
-                    M_local_[m][n] += abs(det_J)*quad_weights[q]*sigma(x_, y_)*phi_m*phi_n
+                    M_local_[m][n] += abs(det_J)*quad_weights[q]*data.sigma(x_, y_)*phi_m*phi_n
         return M_local_
 
     def F_local(self):
@@ -97,5 +98,5 @@ class Local_element:
                 y_ = self.y_map(quad_points[q][0], quad_points[q][1])
                 phi_m = self.phi(m, x_, y_)
 
-                F_local_[m] += abs(det_J)*quad_weights[q]*f(x_, y_)*phi_m
+                F_local_[m] += abs(det_J)*quad_weights[q]*data.f(x_, y_)*phi_m
         return F_local_

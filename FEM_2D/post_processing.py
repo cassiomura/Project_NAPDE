@@ -4,24 +4,20 @@ Author: Cássio Murakami
 Project: NAPDE
 Title: Post-Processing.py
 """
-import numpy as np 
-import math
-import matplotlib.pyplot as plt
-from matplotlib import cm
-
-from data import u_an, plot_error
+# Basic packages:
+from config_packages import np, math, plt, cm, data
 
 def compute_errors(U, mesh):
     U_an = np.zeros(mesh.ndof)
     for i in range(mesh.ndof):
-        U_an[i] = u_an(mesh.nodes[i][0], mesh.nodes[i][1])
+        U_an[i] = data.u_an(mesh.nodes[i][0], mesh.nodes[i][1])
 
     err = 0
     for i in range(mesh.ndof):
         err += (1/mesh.ndof)*(U[i] - U_an[i])**2
     err = math.sqrt(err)
 
-    if plot_error == 'y':
+    if data.plot_error == 'y':
         fig = plt.figure()
         ax = fig.add_subplot(projection='3d')
         ax.scatter(mesh.x_coord, mesh.y_coord, U, color ='black', marker = 'o', label = "Finite Element Solution")

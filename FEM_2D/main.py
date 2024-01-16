@@ -4,15 +4,13 @@ Author: Cássio Murakami
 Project: NAPDE
 Title: main.py
 """
-
 # Basic packages:
-from config_packages import np, math, plt, cm
+from config_packages import np, math, plt, cm, data
 
 # Custom packages:
 import mesh_generation
 import boundary_conditions
 import post_processing
-import data
 
 #1. Mesh generation:
 print("============================================================")
