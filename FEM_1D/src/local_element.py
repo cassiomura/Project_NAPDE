@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Author: Cássio Murakami
-Project: NAPDE FEM_1D
+Project: NAPDE FEM 1D
 Title: local_element.py
 """
 # Basic packages:

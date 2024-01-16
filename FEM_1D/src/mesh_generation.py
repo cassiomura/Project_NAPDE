@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Author: Cássio Murakami
-Project: NAPDE
+Project: NAPDE FEM 1D
 Title: mesh_generation.py
 """
 # Basic packages:
