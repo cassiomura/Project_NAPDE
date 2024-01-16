@@ -63,8 +63,6 @@ def M_jj(x, a, b):
 def uh_interpolate(x, x1, x2, u1, u2):
     return (x - x1)(u2 - u1)/(x2 - x1) + u1
 
-def error
-
 def gauss_integration(func, a, b):
     # Gaussian quadrature parameters:
     zeta_list = [-math.sqrt(3/5), 0 , + math.sqrt(3/5)]
