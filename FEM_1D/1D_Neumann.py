@@ -60,6 +60,11 @@ def M_ij(x, a, b):
 def M_jj(x, a, b):
     return sigma(x)*phi_j(x, a, b)*phi_j(x, a, b)
 
+def uh_interpolate(x, x1, x2, u1, u2):
+    return (x - x1)(u2 - u1)/(x2 - x1) + u1
+
+def error
+
 def gauss_integration(func, a, b):
     # Gaussian quadrature parameters:
     zeta_list = [-math.sqrt(3/5), 0 , + math.sqrt(3/5)]
@@ -115,6 +120,8 @@ class Local_element:
         F_local_[1] = gauss_integration(F_j, x[self.index_i], x[self.index_j])
         return F_local_
     
+
+
 # Local element list:
 local_list = []
 for i in range(dof - 1):
@@ -155,10 +162,10 @@ impose_Neumann(F, dof - 1, h2)
 U = np.linalg.solve(A, F)
 
 # Analytical solution:
-U_an = np.zeros(dof)
-for i in range(dof):
+#U_an = np.zeros(dof)
+#for i in range(dof):
     #U_an[i] = math.sin(x[i])/2
-    U_an[i] = 0.5*(math.sin(x[i]) - math.sinh(x[i]) + math.tanh(math.pi)*math.cosh(x[i]))
+    #U_an[i] = 0.5*(math.sin(x[i]) - math.sinh(x[i]) + math.tanh(math.pi)*math.cosh(x[i]))
 
 # 6. Visualize the solution
 plt.plot(x, U , label = "Finite Element Method")
