@@ -15,8 +15,8 @@ x2 = 2*math.pi
 h = 0.01
 
 # Plot options:
-plot_solution = 'y'
-plot_error = 'n'
+plot_solution = 'n'
+plot_error = 'y'
 
 def f(x):
     return math.sin(x)

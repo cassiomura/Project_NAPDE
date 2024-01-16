@@ -28,22 +28,16 @@ def compute_errors(U, mesh):
             x_map = 0.5*(element.x2 - element.x1)*quadrature_point + 0.5*(element.x2 + element.x1)
             L2_error += 0.5*(element.x2 - element.x1)*quadrature_weight*err(x_map, element.x1, U[element.index_node_1], element.x2, U[element.index_node_2])
     L2_error = math.sqrt(L2_error)
-    #err = 0
-    #for i in range(mesh.ndof):
-    #    err += (1/mesh.ndof)*(U[i] - U_an[i])**2
-    #err = math.sqrt(err)
 
-    #if data.plot_error == 'y':
-    #    fig = plt.figure()
-    #    ax = fig.add_subplot(projection='3d')
-    #    ax.scatter(mesh.x_coord, mesh.y_coord, U, color ='black', marker = 'o', label = "Finite Element Solution")
-    #    ax.scatter(mesh.x_coord, mesh.y_coord, U_an, color ='purple', marker = 'x', label = "Analytical Solution")
-    #    ax.legend()
-    #    plt.title('Finite Element Solver')
-    #    ax.set_xlabel('x')
-    #    ax.set_ylabel('y')
-    #    ax.set_zlabel('u(x,y)')
-    #    plt.figtext(0.15, 0.83, "Error = " + '%.6f' %err)
-    #    plt.show()
+    if data.plot_error == 'y':
+        fig = plt.figure()
+        plt.scatter(mesh.coord, U, color ='black', marker = 'o', label = "Finite Element Solution")
+        plt.scatter(mesh.coord, U_an, color ='purple', marker = 'x', label = "Analytical Solution")
+        plt.legend(fancybox=True, framealpha=1, shadow=True, borderpad=1)
+        plt.title('Finite Element Solver')
+        plt.xlabel('x')
+        plt.ylabel('u(x)')
+        plt.figtext(0.15, 0.83, "L2-error = " + '%.6f' %L2_error)
+        plt.show()
 
     return L2_error
