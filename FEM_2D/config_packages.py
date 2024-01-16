@@ -5,7 +5,7 @@ Project: NAPDE
 Title: config_packages.py
 """
 import importlib
-module_name = "data_ex2"
+module_name = "Data.data_ex3"
 data = importlib.import_module(module_name)
 
 # Basic packages:
