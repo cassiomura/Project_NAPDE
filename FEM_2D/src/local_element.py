@@ -4,11 +4,8 @@ Author: Cássio Murakami
 Project: NAPDE
 Title: local_element.py
 """
-
 # Basic packages:
 from config_packages import np, math, plt, cm, data
-
-#from data import *
 
 # Gaussian quadrature points:
 quad_points = [[0, 1/2], [1/2, 0], [1/2, 1/2]]
@@ -49,54 +46,37 @@ class Local_element:
 
     def A_local(self):
         A_local_ = np.zeros([3, 3])
+
+        K_local = np.zeros([3, 3]) # Local stiffness matrix
+        V_local = np.zeros([3, 3]) # Local advection matrix
+        M_local = np.zeros([3, 3]) # Local mass matrix
+
         det_J = np.linalg.det(self.J)
         for m in range(3):
             for n in range(3):
-                for q in range(len(quad_points)):
-                    x_ = self.x_map(quad_points[q][0], quad_points[q][1])
-                    y_ = self.y_map(quad_points[q][0], quad_points[q][1])
+                for quadrature_weight, quadrature_point in zip(quad_weights, quad_points):
+                    x_ = self.x_map(quadrature_point[0], quadrature_point[1])
+                    y_ = self.y_map(quadrature_point[0], quadrature_point[1])
+                    phi_m = self.phi(m, x_, y_)
+                    phi_n = self.phi(n, x_, y_)
                     dphi_m = self.dphi(m, x_, y_)
                     dphi_n = self.dphi(n, x_, y_)
 
-                    A_local_[m][n] += abs(det_J)*quad_weights[q]*data.mu(x_, y_)*np.dot(dphi_m, dphi_n)
+                    K_local[m][n] += abs(det_J)*quadrature_weight*data.mu(x_, y_)*np.dot(dphi_m, dphi_n)
+                    V_local[m][n] += abs(det_J)*quadrature_weight*np.dot(data.beta(x_, y_), dphi_n)*phi_m
+                    M_local[m][n] += abs(det_J)*quadrature_weight*data.sigma(x_, y_)*phi_m*phi_n
+
+                    A_local_ = K_local + V_local + M_local
         return A_local_
-
-    def V_local(self):
-        V_local_ = np.zeros([3, 3])
-        det_J = np.linalg.det(self.J)
-        for m in range(3):
-            for n in range(3):
-                for q in range(len(quad_points)):
-                    x_ = self.x_map(quad_points[q][0], quad_points[q][1])
-                    y_ = self.y_map(quad_points[q][0], quad_points[q][1])
-                    phi_m = self.phi(m, x_, y_)
-                    dphi_n = self.dphi(n, x_, y_)
-
-                    V_local_[m][n] += abs(det_J)*quad_weights[q]*np.dot(data.beta(x_, y_), dphi_n)*phi_m
-        return V_local_
-
-    def M_local(self):
-        M_local_ = np.zeros([3, 3])
-        det_J = np.linalg.det(self.J)
-        for m in range(3):
-            for n in range(3):
-                for q in range(len(quad_points)):
-                    x_ = self.x_map(quad_points[q][0], quad_points[q][1])
-                    y_ = self.y_map(quad_points[q][0], quad_points[q][1])
-                    phi_m = self.phi(m, x_, y_)
-                    phi_n = self.phi(n, x_, y_)
-
-                    M_local_[m][n] += abs(det_J)*quad_weights[q]*data.sigma(x_, y_)*phi_m*phi_n
-        return M_local_
 
     def F_local(self):
         F_local_ = np.zeros(3)
         det_J = np.linalg.det(self.J)
         for m in range(3):
-            for q in range(len(quad_points)):
-                x_ = self.x_map(quad_points[q][0], quad_points[q][1])
-                y_ = self.y_map(quad_points[q][0], quad_points[q][1])
+            for quadrature_weight, quadrature_point in zip(quad_weights, quad_points):
+                x_ = self.x_map(quadrature_point[0], quadrature_point[1])
+                y_ = self.y_map(quadrature_point[0], quadrature_point[1])
                 phi_m = self.phi(m, x_, y_)
 
-                F_local_[m] += abs(det_J)*quad_weights[q]*data.f(x_, y_)*phi_m
+                F_local_[m] += abs(det_J)*quadrature_weight*data.f(x_, y_)*phi_m
         return F_local_
