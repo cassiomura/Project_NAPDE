@@ -2,7 +2,7 @@
 """
 Author: Cássio Murakami
 Project: NAPDE
-Title: Boundary-condition.py
+Title: Boundary_condition.py
 """
 # Basic packages:
 from config_packages import np, math, plt, cm, data

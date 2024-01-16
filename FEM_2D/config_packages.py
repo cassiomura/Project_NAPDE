@@ -2,7 +2,7 @@
 """
 Author: Cássio Murakami
 Project: NAPDE
-Title: config-packages.py
+Title: config_packages.py
 """
 import importlib
 module_name = "data_ex2"

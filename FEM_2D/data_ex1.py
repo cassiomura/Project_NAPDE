@@ -2,7 +2,7 @@
 """
 Author: Cássio Murakami
 Project: NAPDE
-Title: data-ex1.py
+Title: data_ex1.py
 """
 import numpy as np 
 import math

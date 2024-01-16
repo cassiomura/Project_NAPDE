@@ -2,7 +2,7 @@
 """
 Author: Cássio Murakami
 Project: NAPDE
-Title: Post-Processing.py
+Title: post_processing.py
 """
 # Basic packages:
 from config_packages import np, math, plt, cm, data

@@ -2,11 +2,10 @@
 """
 Author: Cássio Murakami
 Project: NAPDE
-Title: main.py
+Title: mesh_generation.py
 """
-
-import numpy as np 
-import math
+# Basic packages:
+from config_packages import np, math
 from local_element import Local_element
 
 class Mesh:
