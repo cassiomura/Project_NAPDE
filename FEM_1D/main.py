@@ -37,7 +37,7 @@ def main():
         for m in range(2):
             F[mesh.elements_nodes[element][m]] += local_element.F_local()[m]
         element = element + 1
-
+    
     # 3. Impose boundary conditions:
     logging.info("(3/6) Imposing boundary conditions ...")
     A, F, g = boundary_conditions.impose_boundary_conditions(A, F, mesh)
@@ -62,8 +62,9 @@ def main():
 
     # 6. Computing the error:
     logging.info("(6/6) Computing errors ...")
-    L2_error = post_processing.compute_errors(U, mesh)
-    print(L2_error)
+    L2_error, H1_error = post_processing.compute_errors(U, mesh)
+    print(f"L2 Error = {L2_error}")
+    print(f"H1 Error = {H1_error}")
 
     # 7. Finish the program:
     plt.show()

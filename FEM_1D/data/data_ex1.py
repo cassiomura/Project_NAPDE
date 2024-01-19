@@ -36,5 +36,8 @@ def beta(x):
 def sigma(x):
     return 1
 
-def u_an(x):
+def u_analytical(x):
     return 0.5*math.sin(x)
+
+def grad_u_analytical(x):
+    return 0.5*math.cos(x)
