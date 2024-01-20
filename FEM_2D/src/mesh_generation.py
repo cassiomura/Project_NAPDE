@@ -51,5 +51,5 @@ class Mesh:
             node1 = nodes_[element_indexes[0]]
             node2 = nodes_[element_indexes[1]]
             node3 = nodes_[element_indexes[2]]
-            elements_.append(Local_element(node1, node2, node3))
+            elements_.append(Local_element(node1, node2, node3, element_indexes))
         self.elements = elements_

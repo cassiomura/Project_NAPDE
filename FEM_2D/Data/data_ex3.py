@@ -56,7 +56,7 @@ def beta(x, y):
 def sigma(x,y):
     return 0
 
-def u_an(x,y):
+def u_analytical(x,y):
     lambda_1 = -alpha*0.5 + math.sqrt((alpha*0.5)**2 + (math.pi/Ly)**2)
     lambda_2 = -alpha*0.5 - math.sqrt((alpha*0.5)**2 + (math.pi/Ly)**2) 
     p = (1 - math.exp(lambda_2*Lx))/(math.exp(lambda_1*Lx) - math.exp(lambda_2*Lx))

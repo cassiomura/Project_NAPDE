@@ -44,5 +44,5 @@ def beta(x, y):
 def sigma(x,y):
     return 2
 
-def u_an(x,y):
+def u_analytical(x,y):
     return math.exp(x+y)

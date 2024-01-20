@@ -12,11 +12,11 @@ x1 = 0
 y1 = 0
 x2 = 1
 y2 = 1
-h = 0.1
+h = 0.05
 
 # Plot options:
-plot_solution = 'y'
-plot_error = 'n'
+plot_solution = 'n'
+plot_error = 'y'
 
 def f(x, y):
     return 8*math.pi**2*math.sin(2*math.pi*x)*math.sin(2*math.pi*y)
@@ -44,5 +44,5 @@ def beta(x, y):
 def sigma(x,y):
     return 0
 
-def u_an(x,y):
+def u_analytical(x,y):
     return math.sin(2*math.pi*x)*math.sin(2*math.pi*y)

@@ -12,7 +12,11 @@ quad_points = [[0, 1/2], [1/2, 0], [1/2, 1/2]]
 quad_weights = [1/6, 1/6, 1/6]
 
 class Local_element:
-    def __init__(self, point_1, point_2, point_3):
+    def __init__(self, point_1, point_2, point_3, nodes_indexes):
+        self.point_1 = point_1
+        self.point_2 = point_2
+        self.point_3 = point_3
+        self.nodes_indexes = nodes_indexes
         self.x1 = point_1[0]
         self.y1 = point_1[1]
         self.x2 = point_2[0]
