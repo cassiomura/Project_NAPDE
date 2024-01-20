@@ -12,7 +12,7 @@ x1 = 0
 y1 = 0
 x2 = 1
 y2 = 1
-h = 0.05
+h = 0.1
 
 # Plot options:
 plot_solution = 'n'
@@ -46,3 +46,8 @@ def sigma(x,y):
 
 def u_analytical(x,y):
     return math.sin(2*math.pi*x)*math.sin(2*math.pi*y)
+
+def gradu_analytical(x,y):
+    dudx = 2*math.pi*math.cos(2*math.pi*x)*math.sin(2*math.pi*y)
+    dudy = 2*math.pi*math.sin(2*math.pi*x)*math.cos(2*math.pi*y)
+    return [dudx, dudy]

@@ -63,8 +63,9 @@ def main():
 
     # 6. Computing the error:
     logging.info("(6/6) Computing errors ...")
-    err = post_processing.compute_errors(U, mesh)
-    print(err)
+    L2_error, H1_error = post_processing.compute_errors(U, mesh)
+    print(f"L2 error = {L2_error}")
+    print(f"H1 error = {H1_error}")
 
     # 7. Finish the program:
     plt.show()
