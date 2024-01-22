@@ -6,12 +6,10 @@ Title: main.py
 """
 # Basic packages:
 from config_packages import np, math, plt, cm, logging, data, module_name
-
+# Custom packages:
+from src import mesh_generation, boundary_conditions, post_processing, plotting
 # Configure the logging format and level (adjust as needed)
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(message)s")
-
-# Custom packages:
-from src import mesh_generation, boundary_conditions, post_processing
 
 def main():
     #0. Read data:
@@ -24,19 +22,15 @@ def main():
     #2. Assemble of global matrices and right hand side:
     logging.info("(2/6) Assembling global matrices and right hand side ...")
     A = np.zeros([mesh.ndof, mesh.ndof])
-    element = 0 
-    for local_element in mesh.elements:
+    for element, local_element in enumerate(mesh.elements):
         for m in range(3):
             for n in range(3):
                 A[mesh.elements_nodes[element][m]][mesh.elements_nodes[element][n]] += local_element.A_local()[m][n]
-        element = element + 1 
 
     F = np.zeros(mesh.ndof)
-    element = 0
-    for local_element in mesh.elements:
+    for element, local_element in enumerate(mesh.elements):
         for m in range(3):
             F[mesh.elements_nodes[element][m]] += local_element.F_local()[m]
-        element = element + 1
 
     # 3. Impose boundary conditions:
     logging.info("(3/6) Imposing boundary conditions ...")
@@ -51,15 +45,7 @@ def main():
     # 5. Plotting the solution:
     logging.info("(5/6) Plotting the solution ...")
     # Plot the solution
-    if data.plot_solution == 'y':
-        fig = plt.figure()
-        ax = fig.add_subplot(projection='3d')
-        surf = ax.plot_trisurf(mesh.x_coord, mesh.y_coord, U, cmap=cm.coolwarm)
-        ax.set_xlabel('x')
-        ax.set_ylabel('y')
-        ax.set_zlabel('u(x,y)')
-        plt.title('Finite Element Solver')
-        plt.draw()
+    plotting.plot_solution(mesh, U)
 
     # 6. Computing the error:
     logging.info("(6/6) Computing errors ...")

@@ -12,10 +12,10 @@ x1 = 0
 y1 = 0
 x2 = 1
 y2 = 1
-h = 0.1
+h = 0.05
 
 # Plot options:
-plot_solution = 'n'
+plot_solution = 'y'
 plot_error = 'y'
 
 def f(x, y):
